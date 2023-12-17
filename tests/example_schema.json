@@ -1,0 +1,171 @@
+{
+    "engine_version": 8,
+    "name": "first_source",
+    "normalizers": {
+        "json": {"module": "dlt.common.normalizers.json.relational"},
+        "names": "snake_case"
+    },
+    "previous_hashes": [
+        "lZA9DmJngqcKx5NEAURK5eqnWaTxIgvTmJaPqChg0Io=",
+        "Fn2itQ5OmEnS2fOMWjmtGBlGA0TLI3TmSpgXkFGRdTE=",
+        "0qdBkqaqAIfg93jebMTS4Hc5sdbT9ztQt4mm/E1Sx/0="
+    ],
+    "settings": {
+        "default_hints": {
+            "foreign_key": ["_dlt_parent_id"],
+            "not_null": [
+                "_dlt_id",
+                "_dlt_root_id",
+                "_dlt_parent_id",
+                "_dlt_list_idx",
+                "_dlt_load_id"
+            ],
+            "root_key": ["_dlt_root_id"],
+            "unique": ["_dlt_id"]
+        },
+        "detections": ["iso_timestamp"]
+    },
+    "tables": {
+        "_dlt_loads": {
+            "columns": {
+                "inserted_at": {
+                    "data_type": "timestamp",
+                    "name": "inserted_at",
+                    "nullable": false
+                },
+                "load_id": {
+                    "data_type": "text",
+                    "name": "load_id",
+                    "nullable": false
+                },
+                "schema_name": {
+                    "data_type": "text",
+                    "name": "schema_name",
+                    "nullable": true
+                },
+                "schema_version_hash": {
+                    "data_type": "text",
+                    "name": "schema_version_hash",
+                    "nullable": true
+                },
+                "status": {
+                    "data_type": "bigint",
+                    "name": "status",
+                    "nullable": false
+                }
+            },
+            "description": "Created by DLT. Tracks completed loads",
+            "name": "_dlt_loads",
+            "resource": "_dlt_loads",
+            "write_disposition": "skip"
+        },
+        "_dlt_pipeline_state": {
+            "columns": {
+                "_dlt_id": {
+                    "data_type": "text",
+                    "name": "_dlt_id",
+                    "nullable": false,
+                    "unique": true
+                },
+                "_dlt_load_id": {
+                    "data_type": "text",
+                    "name": "_dlt_load_id",
+                    "nullable": false
+                },
+                "created_at": {
+                    "data_type": "timestamp",
+                    "name": "created_at",
+                    "nullable": false
+                },
+                "engine_version": {
+                    "data_type": "bigint",
+                    "name": "engine_version",
+                    "nullable": false
+                },
+                "pipeline_name": {
+                    "data_type": "text",
+                    "name": "pipeline_name",
+                    "nullable": false
+                },
+                "state": {
+                    "data_type": "text",
+                    "name": "state",
+                    "nullable": false
+                },
+                "version": {
+                    "data_type": "bigint",
+                    "name": "version",
+                    "nullable": false
+                },
+                "version_hash": {
+                    "data_type": "text",
+                    "name": "version_hash",
+                    "nullable": true
+                }
+            },
+            "name": "_dlt_pipeline_state",
+            "resource": "_dlt_pipeline_state",
+            "write_disposition": "append"
+        },
+        "_dlt_version": {
+            "columns": {
+                "engine_version": {
+                    "data_type": "bigint",
+                    "name": "engine_version",
+                    "nullable": false
+                },
+                "inserted_at": {
+                    "data_type": "timestamp",
+                    "name": "inserted_at",
+                    "nullable": false
+                },
+                "schema": {
+                    "data_type": "text",
+                    "name": "schema",
+                    "nullable": false
+                },
+                "schema_name": {
+                    "data_type": "text",
+                    "name": "schema_name",
+                    "nullable": false
+                },
+                "version": {
+                    "data_type": "bigint",
+                    "name": "version",
+                    "nullable": false
+                },
+                "version_hash": {
+                    "data_type": "text",
+                    "name": "version_hash",
+                    "nullable": false
+                }
+            },
+            "description": "Created by DLT. Tracks schema updates",
+            "name": "_dlt_version",
+            "resource": "_dlt_version",
+            "write_disposition": "skip"
+        },
+        "my_table": {
+            "columns": {
+                "_dlt_id": {
+                    "data_type": "text",
+                    "name": "_dlt_id",
+                    "nullable": false,
+                    "unique": true
+                },
+                "_dlt_load_id": {
+                    "data_type": "text",
+                    "name": "_dlt_load_id",
+                    "nullable": false
+                },
+                "id": {"data_type": "bigint", "name": "id", "nullable": true},
+                "name": {"data_type": "text", "name": "name", "nullable": false}
+            },
+            "name": "test_resource",
+            "resource": "test_resource",
+            "write_disposition": "append"
+        }
+    },
+    "version": 4,
+    "version_hash": "tiHM2tk4+2+Gec8Ujk84L/BaHYu0jz/RTgcCLNGUyjA="
+}
