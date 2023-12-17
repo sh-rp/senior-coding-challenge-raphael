@@ -19,13 +19,27 @@ def test_model_generator() -> None:
     # check test_resource model
     table_model = models["my_table"]
 
-    # missing required field
+    VALID_DICT = {
+        "foo": "Hello",
+        "id": 5,
+        "name": "dlthub",
+        "content": {"nested": "value"},
+    }
+
+    # validate model
+    model_instance = table_model.model_validate(VALID_DICT)
+    # attributes  should be set
+    assert model_instance.name == "dlthub"  # type: ignore
+    assert model_instance.id == 5  # type: ignore
+    assert model_instance.content == {"nested": "value"}  # type: ignore
+
+    # foo does not exist in schema
+    assert not hasattr(model_instance, "foo")
+
+    # incorrect datatype will raise
+    with pytest.raises(ValidationError):
+        table_model.model_validate({**VALID_DICT, "id": "five"})
+
+    # missing required field will raise
     with pytest.raises(ValidationError):
         table_model.model_validate({"foo": "Hello"})
-
-    # has required field
-    model_instance = table_model.model_validate({"foo": "Hello", "name": "dlthub"})
-    assert model_instance.name == "dlthub"  # type: ignore
-
-    # foo is not part of table definition
-    assert not hasattr(model_instance, "foo")

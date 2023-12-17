@@ -159,7 +159,8 @@
                     "nullable": false
                 },
                 "id": {"data_type": "bigint", "name": "id", "nullable": true},
-                "name": {"data_type": "text", "name": "name", "nullable": false}
+                "name": {"data_type": "text", "name": "name", "nullable": false},
+                "content": {"data_type": "complex", "name": "name", "nullable": true}
             },
             "name": "test_resource",
             "resource": "test_resource",

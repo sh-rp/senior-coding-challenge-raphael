@@ -31,9 +31,10 @@ def _generate_model(name: str, schema: TTableSchema) -> Type[BaseModel]:
             continue
         fields[cname] = (
             (type_map[column["data_type"]] | None, None)
-            if column.get("nullable")
+            if column.get("nullable", False) is True
             else (type_map[column["data_type"]], ...)
         )
+        print(fields)
 
     return create_model(name + "_model", **fields)  # type: ignore
     # END: THIS WILL BE REMOVED FOR THE HOMEWORK
