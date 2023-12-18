@@ -24,7 +24,7 @@ print(user_instance.name)
 user_instance = User.model_validate({"index": "one", "name": "dave"})
 ```
 
-These pydantic models can also be created dynamically.
+These pydantic models can also be created dynamically in python.
 
 In this task you will create a converter function that converts a dlt schema (which includes a list of tables with columns) to a dict of pydantic models that can be used to validate actual data against a dlt schema. You will also need to write the relevant tests to make sure that your code works for all cases.
 
@@ -33,7 +33,7 @@ In this task you will create a converter function that converts a dlt schema (wh
 * Clone this repository to your local hard drive with `git clone ...`
 * Install the python dependencies `poetry install`
 * Start the poetry shell with `poetry shell`
-* Ensure the pytest tests run with `pytest tests`(they will not pass, you need to finish the main task to get them to run, but they should execute)
+* Ensure the pytest tests run with `pytest tests` (they will not pass, you need to finish the main task to get them to run, but they should execute)
 * Now you're all set
 
 ## Main Task
@@ -41,12 +41,12 @@ The main task will be to implement the function `generate_model` in `src/model_g
 
 Though not mandatory, it would be nice if you could format your code (run `black .` from the command line) and add python typings where applicable (run `mypy .` to check your typings).
 
-If you get stuck at some point or you know what is still missing but you could not implement it because you ran out of time or do not know how to do it, leave a comment in the code. It is better to know that something is missing and be able to ask for help than not adding anything at all :)
+If you get stuck at some point or you know what is still missing but you could not implement it because you ran out of time or do not know how to do it, leave a comment in the code. It is better to know that something is missing and be able to ask for help than not being aware of problems at all :)
 
 ## Additional Tasks
 If you have time left, you can earn extra points by implementing and testing some or all of the following features:
 
-1. Find a way to store additional field annotations in the pydantic models, such as as `primary_key` or `unique`.
+1. Find a way to store the additional field annotations from the dlt schemas into the pydantic models, such as as `primary_key` or `unique`.
 
 2. `dlt` has a concept of `schema contracts`. Though our schema contracts are more complex than this, for the sake of the test let's assume we have one contract that says the incoming data will fail validation by raising an exception if there are extra fields that are not defined in the schema. Another contract might say, that extra fields will simply be removed without an exception, so the data will be sanitized. Both is possible with `pydantic` models. Extend your function to be able to respect these two contracts.
 
@@ -56,6 +56,9 @@ If you have time left, you can earn extra points by implementing and testing som
 * [dlt docs](https://dlthub.com/docs)
 * [pydantic docs](https://docs.pydantic.dev/latest/)
 
-## Questions
-
-	
+## Commands
+* `poetry install` to install dependencies
+* `poetry shell` to start the poetry shell which will enable you to work within the virtual environment with your installed dependencies
+* `pytest tests` to run the tests
+* `black .` to format your code
+* `mypy .` to check your types
