@@ -1,11 +1,21 @@
 import json
 import pytest
+from decimal import Decimal
 
 from dlt.common.schema import Schema
 
 from src.model_generator import generate_models
 
 from pydantic import ValidationError
+
+# this is a dict that should pass validation of the "my_table" model
+VALID_DICT = {
+    "foo": "Hello",
+    "id": 5,
+    "name": "dlthub",
+    "content": {"nested": "value"},
+    "salary": Decimal("100.00"),
+}
 
 
 def test_model_generator() -> None:
@@ -18,13 +28,6 @@ def test_model_generator() -> None:
 
     # check test_resource model
     table_model = models["my_table"]
-
-    VALID_DICT = {
-        "foo": "Hello",
-        "id": 5,
-        "name": "dlthub",
-        "content": {"nested": "value"},
-    }
 
     # validate model
     model_instance = table_model.model_validate(VALID_DICT)

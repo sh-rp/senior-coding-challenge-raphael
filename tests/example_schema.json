@@ -158,7 +158,8 @@
                     "name": "_dlt_load_id",
                     "nullable": false
                 },
-                "id": {"data_type": "bigint", "name": "id", "nullable": true},
+                "id": {"data_type": "bigint", "name": "id", "nullable": false, "primary_key": true},
+                "salary": {"data_type": "decimal", "name": "salary", "nullable": false},
                 "name": {"data_type": "text", "name": "name", "nullable": false},
                 "content": {"data_type": "complex", "name": "name", "nullable": true}
             },
