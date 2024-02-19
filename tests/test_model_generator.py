@@ -1,12 +1,10 @@
 import json
-import pytest
 from decimal import Decimal
 
+import pytest
 from dlt.common.schema import Schema
-
-from src.model_generator import generate_models
-
 from pydantic import ValidationError
+from src.model_generator import generate_models
 
 # this is a dict that should pass validation of the "my_table" model
 VALID_DICT = {
@@ -46,3 +44,15 @@ def test_model_generator() -> None:
     # missing required field will raise
     with pytest.raises(ValidationError):
         table_model.model_validate({"foo": "Hello"})
+
+
+def test_required_fields() -> None:
+    # A test using a schema with nullable fields to check if the
+    # pydantic model is created with an "Optional" attribute
+    pass
+
+
+def test_aliased_fields() -> None:
+    # A test using a schema with field having a conflicting name with
+    # pydantic fields should still be created without problem
+    pass
